@@ -3,7 +3,7 @@
 [![N|Solid](https://i.imgur.com/mF9AKO0.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=fabinhoec2210@gmail.com&item_name=F%C3%A1bio&currency_code=BRL)
 
 
-Este projeto tem como o intuito, facilitar a criação de api, pois se trata de uma base que criei para de fato criar meinhas apis em projetos futuros.
+Este projeto tem como o intuito, facilitar a criação de api, pois se trata de uma base que criei para de fato criar minhas apis em projetos futuros.
 
 
 Para o uso deste projeto, basta colocar em algum servidor local ou web server.
