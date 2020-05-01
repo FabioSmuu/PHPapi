@@ -12,8 +12,8 @@ O retorno dosvalores são feitos todos no formato json para a melhor manipulaç�
 
 
 ### Configurações:
-- Configure seu banco de dados mysql no arquivo [config.php](/%23/config.php).
-- Em [query.php](/%23/query.php) se entronca as funções usadas para exibição de valores.
+- Configure seu banco de dados mysql no arquivo [config.php](/config.php).
+- Em [query.php](/query.php) se entronca as funções usadas para exibição de valores.
 #
 #
 
