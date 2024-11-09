@@ -1,16 +1,16 @@
 <?php
 @require_once __DIR__ . '/config.php';
 
-$pdo = new PDO("mysql:host=$localhost:$porta;dbname=$db;charset=utf8", $usuario, $senha);
+$pdo = new PDO("mysql:host=$localhost:$db_port;dbname=$db_name;charset=utf8", $db_user, $db_pass);
 
-if(isset($_GET)) foreach($_GET As $ng=>$vg) $_GET[$ng] = filtrar($vg);
-if(isset($_POST)) foreach($_POST As $np=>$vp) $_POST[$np] = filtrar($vp);
-if(isset($_COOKIE)) foreach($_COOKIE As $nc=>$vc) $_COOKIE[$nc] = filtrar($vc);
-if(isset($_REQUEST)) foreach($_REQUEST As $nr=>$vr) $_REQUEST[$nr] = filtrar($vr);
-if(isset($_SESSION)) foreach($_SESSION As $ns=>$vs) $_SESSION[$ns] = filtrar($vs);
+if(isset($_GET)) foreach($_GET As $ng=>$vg) $_GET[$ng] = _filter($vg);
+if(isset($_POST)) foreach($_POST As $np=>$vp) $_POST[$np] = _filter($vp);
+if(isset($_COOKIE)) foreach($_COOKIE As $nc=>$vc) $_COOKIE[$nc] = _filter($vc);
+if(isset($_REQUEST)) foreach($_REQUEST As $nr=>$vr) $_REQUEST[$nr] = _filter($vr);
+if(isset($_SESSION)) foreach($_SESSION As $ns=>$vs) $_SESSION[$ns] = _filter($vs);
 
-function filtrar($str)
-{
+// Agora filter pode ser usado como filter_var nativo no PHP.
+function _filter($str) {
 	$str = strip_tags($str);
 	$str = trim($str);
 	$str = addslashes($str);
@@ -20,38 +20,33 @@ function filtrar($str)
 	return $str;
 }
 
-function executar($query)
-{
+function _exec($query) {
 	global $pdo;
-	$tabela = $pdo->prepare($query);
-	$tabela->execute();
-	return $tabela;
+	$table = $pdo->prepare($query);
+	$table->execute();
+	return $table;
 }
 
-function ler($query)
-{
-	return executar($query)->fetch();
+function _read($query) {
+	return _exec($query)->fetch();
 }
 
-function lista($query)
-{
-	return executar($query)->fetchAll();
+function _list($query) {
+	return _exec($query)->fetchAll();
 }
 
-function contar($query)
-{
-	return executar($query)->RowCount();
+function _count($query) {
+	return _exec($query)->RowCount();
 }
 
-function desfoque($pass)
-{
-	$chave = "xCg532%@%gdvf^5DGaa6&*rFTfg^FD4\$OIFThrR_gh(ugf*/";
+function _encode($pass) {
+	$key = "xCg532%@%gdvf^5DGaa6&*rFTfg^FD4\$OIFThrR_gh(ugf*/";
 	$pass = md5($pass);
 	$pass = sha1($pass);
 	$pass = hash('md5', $pass, false);
 	$pass = hash('sha512', $pass);
-	$pass = crypt($pass, $chave);
-	$pass = hash_hmac('md5', $pass, $chave, false);
-	$pass = mhash(MHASH_MD5, $pass, $chave);
-	return md5($pass.($chave));
+	$pass = crypt($pass, $key);
+	$pass = hash_hmac('md5', $pass, $key, false);
+	$pass = mhash(MHASH_MD5, $pass, $key);
+	return md5($pass.($key));
 }
