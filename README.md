@@ -2,6 +2,8 @@
 
 Este repositório tem como intuito, apenas demonstrar uma maneira de tratar API por funções e pdo:mysql
 
+> Não use este repositório em projetos finais, se trata apenas de uma demonstração superficial de API.
+
 Para o uso deste projeto, basta colocar em algum servidor local ou web server.
 
 O retorno dos valores são feitos todos no formato json como padrão web.
