@@ -7,15 +7,17 @@ header('Content-Type: application/json');
 
 if(!isset($_GET['username'])) json('...', true);
 
-$username = filtrar($_GET['username']);
+$username = _filter($_GET['username']);
 
 if(!user('username', $username)) json('Cliente invalido.', true);
 
 if(isset($_GET['password'])) {
-	$password = desfoque(filtrar($_GET['password']));
+	$password = _encode(_filter($_GET['password']));
+
 	$json = array(
-		'login' => logar($username, $password)
+		'login' => login($username, $password)
 	);
+
 	json($json);
 }
 
