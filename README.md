@@ -1,4 +1,4 @@
-# Repositorio de arquivos para criação de api.
+# Repositorio de arquivos para exemplo simples de api.
 
 Este repositório tem como intuito, apenas demonstrar uma maneira de tratar API por funções e pdo:mysql
 
