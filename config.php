@@ -1,6 +1,6 @@
 <?php
 $localhost = 'localhost';
-$porta = '3306';
-$usuario = 'root';
-$senha = 'dl100';
-$db = 'smuu';
+$db_port = '3306';
+$db_user = 'root';
+$db_pass = 'dl100';
+$db_name = 'smuu';
