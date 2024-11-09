@@ -5,24 +5,24 @@ header("Access-Control-Allow-Origin: *");
 
 header('Content-Type: application/json');
 
-if(!isset($_GET['nome'])) json('...', true);
+if(!isset($_GET['username'])) json('...', true);
 
-$nome = filtrar($_GET['nome']);
+$username = filtrar($_GET['username']);
 
-if(!user('nome', $nome)) json('Cliente invalido.', true);
+if(!user('username', $username)) json('Cliente invalido.', true);
 
-if(isset($_GET['senha'])) {
-	$senha = desfoque(filtrar($_GET['senha']));
+if(isset($_GET['password'])) {
+	$password = desfoque(filtrar($_GET['password']));
 	$json = array(
-		'login' => logar($nome, $senha)
+		'login' => logar($username, $password)
 	);
 	json($json);
 }
 
 $json = array(
-	'ID' => user('id', $nome),
-	'nome' =>  user('nome', $nome),
-	'email' =>  user('email', $nome)
+	'ID' => user('id', $username),
+	'username' =>  user('username', $username),
+	'email' =>  user('email', $username)
 );
 
 json($json);
