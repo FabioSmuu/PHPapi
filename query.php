@@ -1,17 +1,17 @@
 <?php
-function user($coluna, $nome)
+function user($column, $username)
 {
-	$nome = filtrar($nome);
-	$coluna = filtrar($coluna);
+	$username = _filter($username);
+	$column = _filter($column);
 
-	$user = ler("SELECT * FROM users WHERE nome = '$nome' LIMIT 1;");
-	return  $user[filtrar($coluna)];
+	$user = ler("SELECT * FROM users WHERE username = '$username' LIMIT 1;");
+	return  $user[_filter($column)];
 }
 
-function json($json, $retorno = false)
 {
-	if ($retorno)
+function json($json, $return = false)
 	{
+	if ($return)
 		$json = array(
 			'message' => $json
 		);
@@ -21,11 +21,11 @@ function json($json, $retorno = false)
 	exit;
 }
 
-function logar($nome, $senha)
+function login($username, $password)
 {	
-	if ($senha === user('senha', $nome))
+	if ($password === user('senha', $username))
 	{
-		return $log = user('id', $nome);
+		return user('id', $username);
 	}
 	else {
 		json('Senha invalida.', true);
